@@ -40,7 +40,7 @@ public class UrlReceiverServer {
 
     private void startServer() {
         try {
-            HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
+            HttpServer server = HttpServer.create(new InetSocketAddress(5025), 0);
             server.createContext("/receive-url", new UrlHandler());
             server.setExecutor(null); // creates a default executor
             server.start();
