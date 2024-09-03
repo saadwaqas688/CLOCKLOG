@@ -34,7 +34,7 @@ public class GlobalEventListener implements NativeKeyListener, NativeMouseMotion
 //    private static final String SCREENSHOT_DIR = "screenshots";
     private static final String LOG_FILE = DatabaseConfig.getLogFilePath();
     private static final String SCREENSHOT_DIR = DatabaseConfig.getScreenshotDirPath();
-    private static final long SCREEN_SHOT_TAKING_TIME = 5000;
+    private static final long SCREEN_SHOT_TAKING_TIME = 120000;
 
     private boolean isMouseMoving = false;
     private final long MOVEMENT_THRESHOLD = 100; // Time in milliseconds to consider mouse movement as stopped

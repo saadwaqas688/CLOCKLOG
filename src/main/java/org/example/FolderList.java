@@ -126,7 +126,7 @@ public class FolderList extends JFrame {
 
         this.user = user;
 
-this.IDLE_TIME_TRACKING=user.getTimeTrackingReminderInterval()*1000L;
+this.IDLE_TIME_TRACKING=user.getTimeTrackingReminderInterval()*60000L;
 
 
         startGlobalEventListener();
@@ -241,7 +241,7 @@ this.IDLE_TIME_TRACKING=user.getTimeTrackingReminderInterval()*1000L;
         System.out.println("[DEBUG] Folder list refreshed."+user.isScreenShotNotification());
 
         listener.setIsScreenShotNotification(user.isScreenShotNotification());
-        IDLE_TIME_TRACKING=user.getTimeTrackingReminderInterval()*1000L;
+        IDLE_TIME_TRACKING=user.getTimeTrackingReminderInterval()*60000L;
         // Refresh logic here...
     }
 
@@ -1175,8 +1175,8 @@ this.IDLE_TIME_TRACKING=user.getTimeTrackingReminderInterval()*1000L;
 //        frame.setLayout(new FlowLayout());
 
         // Create the status options
-        String[] statuses = {"","Completed", "Review", "ToDo", "InProgress"};
-        JComboBox<String> statusDropdown = new JComboBox<>(statuses);
+          CustomStatusComboBox statusDropdown = new CustomStatusComboBox();
+
 
         // Set dimensions and background color
 //        statusDropdown.setPreferredSize(new Dimension(180, 25));
