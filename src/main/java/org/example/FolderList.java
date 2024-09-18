@@ -117,6 +117,9 @@ public class FolderList extends JFrame {
     private JPanel searchProjectPanel;  // Panel to hold the Settings UI
     private JPanel searchPanel;  // Panel to hold the Settings UI
 
+        private UrlReceiverServer urlServer;  // Panel to hold the Settings UI
+
+
     private final StatusWindow statusWindow = new StatusWindow(this);
 
 
@@ -138,7 +141,7 @@ this.IDLE_TIME_TRACKING=user.getTimeTrackingReminderInterval()*60000L;
 
         addSidePanel(mainPanel);
 
-        new UrlReceiverServer();
+       urlServer= new UrlReceiverServer();
 
 
         centerPanel = createCenterPanel();
@@ -2588,6 +2591,7 @@ this.IDLE_TIME_TRACKING=user.getTimeTrackingReminderInterval()*60000L;
 
 
     private void updateGlobalTimerInDatabase(long totalSeconds) {
+
         String sql = "UPDATE UserTime SET hours_worked_daily = ? WHERE user_id = ?";
 
         try (Connection conn = DriverManager.getConnection(DB_URL);
@@ -2843,6 +2847,8 @@ this.IDLE_TIME_TRACKING=user.getTimeTrackingReminderInterval()*60000L;
     }
 
     private void updateGlobalTimer() {
+        urlServer.setServerCounter();
+    System.out.println("waqas"+urlServer.getServerCounter());
         long elapsedTime = System.currentTimeMillis() - globalStartTime;
         int seconds = (int) (elapsedTime / 1000) % 60;
         int minutes = (int) (elapsedTime / 60000) % 60;
